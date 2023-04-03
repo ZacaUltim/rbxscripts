@@ -1,0 +1,213 @@
+--loadstring(game:HttpGet("https://pastebin.com/raw/5gaLQA07"))()
+
+--UI MENU CODE--
+getgenv().getstrength = false
+getgenv().gettoughness = false
+getgenv().getspeed = false
+getgenv().getjump = false
+getgenv().autobuy = false
+getgenv().autobuystat = nil
+
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local hub = library.new("STPS Endless Hub", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+-- first page
+local pageStats = hub:addPage("Stats", 5012544693)
+local sectionStatsAF = pageStats:addSection("Autofarm")
+
+sectionStatsAF:addButton("Info: Psychic Power is NOT autofarmable. Farm it normally,", function()
+end)
+
+sectionStatsAF:addButton("But it will interfere with Speed and Jump farming.", function()
+end)
+
+sectionStatsAF:addButton("--------------------------------------------------------------", function()
+end)
+
+sectionStatsAF:addToggle("AF Strength", false, function(value)
+    getgenv().getstrength = value
+    print("Toggled AF Strength to", value)
+end)
+
+sectionStatsAF:addToggle("AF Toughness", false, function(value)
+    getgenv().getdurability = value
+    print("Toggled AF Toughness to", value)
+end)
+
+sectionStatsAF:addToggle("AF Speed", false, function(value)
+    getgenv().getspeed = value
+    print("Toggled AF Speed to", value)
+end)
+
+sectionStatsAF:addToggle("AF Jump Height", false, function(value)
+    getgenv().getjump = value
+    print("Toggled AF Jump Height to", value)
+end)
+
+sectionStatsAF:addButton("", function()
+end)
+
+sectionStatsAF:addToggle("Auto Buy / Upgrade", false, function(value)
+    getgenv().autobuy = value
+    print("Toggled Auto Buy / Upgrade to", value)
+end)
+
+sectionStatsAF:addDropdown("Choose Stat to Upgrade", {"Strength", "Toughness", "Speed", "Jump Height", "Psychic Power"}, function(text)
+    getgenv().autobuystat = text
+    print("Set Auto Buy Stat to", text)
+end)
+
+-- section1:addButton("Button", function()
+-- print("Clicked")
+-- end)
+-- section1:addTextbox("Notification", "Default", function(value, focusLost)
+-- print("Input", value)
+
+-- if focusLost then
+-- venyx:Notify("Title", value)
+-- end
+-- end)
+
+-- sectionStatsAF:addKeybind("Toggle Keybind", Enum.KeyCode.One, function()
+-- print("Activated Keybind")
+-- venyx:toggle()
+-- end, function()
+-- print("Changed Keybind")
+-- end)
+-- section2:addColorPicker("ColorPicker", Color3.fromRGB(50, 50, 50))
+-- section2:addColorPicker("ColorPicker2")
+-- section2:addSlider("Slider", 0, -100, 100, function(value)
+-- print("Dragged", value)
+-- end)
+-- section2:addDropdown("Dropdown", {"Hello", "World", "Hello World", "Word", 1, 2, 3})
+-- section2:addDropdown("Dropdown", {"Hello", "World", "Hello World", "Word", 1, 2, 3}, function(text)
+-- print("Selected", text)
+-- end)
+-- section2:addButton("Button")
+
+-- -- second page
+-- local theme = venyx:addPage("Theme", 5012544693)
+-- local colors = theme:addSection("Colors")
+
+-- for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+-- colors:addColorPicker(theme, color, function(color3)
+-- venyx:setTheme(theme, color3)
+-- end)
+-- end
+
+local pageMisc = hub:addPage("Misc", 5012544693)
+
+local sectionMisc = pageMisc:addSection("discord.gg/MqsE3Wn7Fr by ZacaUltim")
+
+sectionMisc:addKeybind("UI Toggle Keybind", Enum.KeyCode.RightShift, function()
+    print("Activated Keybind")
+    hub:toggle()
+    end, function()
+    print("Changed Keybind")
+end)
+
+-- load
+hub:SelectPage(hub.pages[1], true)
+
+--MAIN CODE--
+while true do
+    if getstrength == true then
+        local A_1 = 
+        {
+            [1] = "Add_FS_Request"
+        }
+        local Event = game:GetService("ReplicatedStorage").RemoteEvent
+        Event:FireServer(A_1)
+    end
+
+    if getdurability == true then
+        local A_1 = 
+        {
+            [1] = "+BT1"
+        }
+        local Event = game:GetService("ReplicatedStorage").RemoteEvent
+        Event:FireServer(A_1)
+    end
+
+    if getspeed == true then
+        local A_1 = 
+        {
+            [1] = "Add_MS_Request"
+        }
+        local Event = game:GetService("ReplicatedStorage").RemoteEvent
+        Event:FireServer(A_1)
+    end
+
+    if getjump == true then
+        local A_1 = 
+        {
+            [1] = "Add_JF_Request"
+        }
+        local Event = game:GetService("ReplicatedStorage").RemoteEvent
+        Event:FireServer(A_1)
+    end
+
+    if autobuy == true then
+        if autobuystat == "Strength" then
+            local A_1 = 
+            {
+                [1] = "StatMultiplier", 
+                [2] = "FS"
+            }
+            local Event = game:GetService("ReplicatedStorage").RemoteEvent
+            Event:FireServer(A_1)
+        end
+
+        if autobuystat == "Toughness" then
+            local A_1 = 
+            {
+                [1] = "StatMultiplier", 
+                [2] = "BT"
+            }
+            local Event = game:GetService("ReplicatedStorage").RemoteEvent
+            Event:FireServer(A_1)
+        end
+
+        if autobuystat == "Speed" then
+            local A_1 = 
+            {
+                [1] = "StatMultiplier", 
+                [2] = "MS"
+            }
+            local Event = game:GetService("ReplicatedStorage").RemoteEvent
+            Event:FireServer(A_1)
+        end
+
+        if autobuystat == "Jump Height" then
+            local A_1 = 
+            {
+                [1] = "StatMultiplier", 
+                [2] = "JF"
+            }
+            local Event = game:GetService("ReplicatedStorage").RemoteEvent
+            Event:FireServer(A_1)
+        end
+
+        if autobuystat == "Psychic Power" then
+            local A_1 = 
+            {
+                [1] = "StatMultiplier", 
+                [2] = "PP"
+            }
+            local Event = game:GetService("ReplicatedStorage").RemoteEvent
+            Event:FireServer(A_1)
+        end
+    end
+    wait()
+end
